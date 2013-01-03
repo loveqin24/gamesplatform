@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="gamesplatform"
+  id="myeclipse.1356791039853"
+  context-root="/games"
+  j2ee-spec="6.0"
+  archive="gamesplatform.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

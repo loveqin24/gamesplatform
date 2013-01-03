@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <!-- 与spring集成 -->
+	<constant name="struts.objectFactory" value="spring"/>
+	<!-- 处理编码问题 -->
+	<constant name="struts.i18n.encoding" value="gbk" />	
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+    <constant name="struts.multipart.maxSize" value="10701096"/>
+    <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+    <constant name="struts.multipart.saveDir " value="d:/tmp" />
+    <constant name="struts.configuration.xml.reload" value="true"></constant>
+    
+	<package name="game" extends="struts-default">
+<!-- 		<action name="goIndex" class="com.game.action.GoIndex" -->
+<!-- 			method="execute"> -->
+<!-- 			<result name="success">/index.jsp</result> -->
+<!-- 		</action> -->
+		<action name="admins_*" class="com.game.action.AdminsAction" method="{1}">
+	      <result>/admin/include/admin/admins_list.jsp</result>
+	      <result name="list" type="redirect">/admin/include/admin/admins_list.action</result>
+	      <result name="edit">/admin/include/admin/admins_edit.jsp</result>
+	      <result name="insert">/admin/include/admin/admins_insert.jsp</result>
+	      <result name="input">/admin/include/admin/admins_{1}.jsp</result>
+	      <result name="login" type="redirect">/admin/index.jsp</result>
+	      <result name="loginfail">/admin/login.jsp</result>
+	      <result name="changepassword" type="redirect">/admin/images/MyHtml.html</result>
+	      <result name="changefail">/admin/include/admin/amend.jsp</result>
+	    </action>
+	    
+		<action name="users_*" class="usersAction" method="{1}">
+	      <result>/admin/include/user/users_list.jsp</result>
+	       <result name="list" type="redirect">/admin/include/user/users_list.action</result>
+	      <result name="edit">/admin/include/user/users_edit.jsp</result>
+	      <result name="insert">/admin/include/user/users_insert.jsp</result>
+	      <result name="input">/admin/include/user/users_{1}.jsp</result>
+	      <result name="login">/admin/include/user/users_loginsucess.jsp</result>
+	      <result name="prelogin">/admin/include/user/users_login.jsp</result>
+	      <result name="register">/admin/include/user/users_register.jsp</result>
+	      <result name="show">/admin/include/user/users_show.jsp</result>
+	      <result name="registersave" type="redirect">/goIndex.action</result>
+	      <result name="loginfail">/admin/include/user/users_loginfail.jsp</result>
+	      <result name="showfail">/admin/include/user/users_showfail.jsp</result>
+	    </action>
+	    <action name="orderlist_*" class="orderListAction" method="{1}">
+	      <result>/admin/include/order/orderlist_list.jsp</result>
+	       <result name="list" type="redirect">/admin/include/order/orderlist_list.action</result>
+	      <result name="edit">/admin/include/order/orderlist_edit.jsp</result>
+	      <result name="insert">/admin/include/order/orderlist_insert.jsp</result>
+	      <result name="input">/admin/include/order/orderlist_{1}.jsp</result>
+	      <result name="showcar">/showCar.jsp</result>
+	      
+	    </action>
+	     <action name="orderform_*" class="orderFormAction" method="{1}">
+	      <result>/admin/include/order/orderform_list.jsp</result>
+	       <result name="list" type="redirect">/admin/include/order/orderform_list.action</result>
+	      <result name="edit">/admin/include/order/orderform_edit.jsp</result>
+	      <result name="insert">/admin/include/order/orderform_insert.jsp</result>
+	      <result name="input">/admin/include/order/orderform_{1}.jsp</result>
+	      <result name="showcar">/showCar.jsp</result>
+	      <result name="add"  type="redirect">orderform_showcar.action</result>
+	    </action>
+	    
+		<action name="addCommodityClass" class="commodityClassAddAction">
+			<result type="chain">findAllCommodityClass</result>
+		</action>
+		
+		<action name="findAllCommodityClass" class="commodityClassListAction">
+			<result>/admin/include/commodityClass/commodityClassList.jsp</result>
+		</action>
+		
+		<action name="addCommodityPage" class="commodityAddtAction" method="addBefore">
+			<result name="success">/admin/include/commodity/commodityAdd.jsp</result>
+		</action>
+		
+		<action name="addCommodity" class="commodityAddtAction">
+			<result name="success" type="chain">findAllCommodity</result>
+		</action>
+		
+		<action name="findAllCommodity" class="commodityListAction">
+			<result name="success">/admin/include/commodity/commodityList.jsp</result>
+		</action>
+		
+		<action name="deleteCommodity" class="commodityDeleteAction">
+			<result name="success" type="chain">findAllCommodity</result>
+		</action>
+		<action name="deleteCommodityClass" class="commodityClassDeleteAction">
+			<result name="success" type="chain">findAllCommodityClass</result>
+		</action>
+		
+		<action name="goIndex" class="goIndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="showImg" class="showImgAction">
+			<result type="stream"><!--处理结果类型为流-->
+				<param name="contentType">image/jpeg</param><!--文件类型为jpg图片--> 
+				<param name="inputName">inputStream</param><!--设置其输入流-->   
+			</result>  
+		</action>
+		
+		<action name="showByClass" class="ShowByClassAction">
+			<result name="success">/showByClass.jsp</result>
+		</action>
+		
+		<action name="showCommodity" class="ShowCommodityAction">
+			<result name="success">/showdetails.jsp</result>
+		</action>
+		
+		<action name="addToCar" class="AddToCarAction">
+			<result name="success">/showCar.jsp</result>
+		</action>
+		
+		<action name="deleteFromCar" class="DeleteFromCar">
+			<result name="success">/showCar.jsp</result>
+		</action>
+	</package>
+</struts>

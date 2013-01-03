@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+           
+	<bean id="commodityClassDAO" class="com.game.dao.impl.CommodityClassDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="commodityClassService" class="com.game.service.impl.CommodityClassServiceImpl">
+		<property name="commodityClassDAO" ref="commodityClassDAO"/>
+	</bean>
+	
+	<bean id="commodityDAO" class="com.game.dao.impl.CommodityDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="commodityService" class="com.game.service.impl.CommodityServiceImpl">
+		<property name="commodityDAO" ref="commodityDAO"/>
+	</bean>
+	
+		
+	<bean id="usersDAO" class="com.game.dao.impl.UsersDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="usersService" class="com.game.service.impl.UsersServiceImpl">
+		<property name="usersDAO" ref="usersDAO"/>
+<!-- 		<property name="users" ref="users"/> -->
+	</bean>
+	
+	<bean id="adminsDAO" class="com.game.dao.impl.AdminsDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="adminsService" class="com.game.service.impl.AdminsServiceImpl">
+		<property name="adminsDAO" ref="adminsDAO"/>
+<!-- 		<property name="admin" ref="admin"/> -->
+	</bean>
+	
+	<bean id="orderListDAO" class="com.game.dao.impl.OrderListDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="orderListService" class="com.game.service.impl.OrderListServiceImpl">
+		<property name="orderListDAO" ref="orderListDAO"/>
+	</bean>
+	
+	<bean id="orderFormDAO" class="com.game.dao.impl.OrderFormDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="orderFormService" class="com.game.service.impl.OrderFormServiceImpl">
+		<property name="orderFormDAO" ref="orderFormDAO"/>
+	</bean>
+
+</beans>

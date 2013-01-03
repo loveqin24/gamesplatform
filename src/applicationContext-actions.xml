@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <bean name="commodityClassDeleteAction" class="com.game.action.CommodityClassDeleteAction" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+	</bean>
+    
+    <bean name="orderFormAction" class="com.game.action.OrderFormAction" scope="prototype">
+    	<property name="orderFormService" ref="orderFormService"/>
+    	<property name="commodityClassService" ref="commodityClassService"/>
+    </bean>  
+    
+    
+    <bean name="orderListAction" class="com.game.action.OrderListAction" scope="prototype">
+    	<property name="orderListService" ref="orderListService"/>
+    </bean>  
+    
+    <bean name="adminsAction" class="com.game.action.AdminsAction" scope="prototype">
+    	<property name="adminsService" ref="adminsService"/>
+    </bean>       
+    
+    <bean name="usersAction" class="com.game.action.UsersAction" scope="prototype">
+    	<property name="usersService" ref="usersService"/>
+    </bean>         
+           
+    <bean name="commodityClassAddAction" class="com.game.action.CommodityClassAddAction" scope="prototype">
+    	<property name="commodityClassService" ref="commodityClassService"/>
+    </bean>
+    
+    <bean name="commodityClassListAction" class="com.game.action.CommodityClassListAction" scope="prototype">
+    	<property name="commodityClassService" ref="commodityClassService"/>
+    </bean>
+    
+	<bean name="commodityAddtAction" class="com.game.action.CommodityAddAction" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+    
+   <bean name="commodityListAction" class="com.game.action.CommodityListAction" scope="prototype">
+    	<property name="commodityService" ref="commodityService"/>
+    </bean>
+    
+	<bean name="commodityDeleteAction" class="com.game.action.CommodityDeleteAction" scope="prototype">
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="goIndexAction" class="com.game.action.GoIndex" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="showImgAction" class="com.game.action.ShowImg" scope="prototype">
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="ShowByClassAction" class="com.game.action.ShowByClass" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="ShowCommodityAction" class="com.game.action.ShowCommodity" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="AddToCarAction" class="com.game.action.AddToCarAction" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+	<bean name="DeleteFromCar" class="com.game.action.DeleteFromCar" scope="prototype">
+		<property name="commodityClassService" ref="commodityClassService"/>
+		<property name="commodityService" ref="commodityService"/>
+	</bean>
+	
+</beans>
